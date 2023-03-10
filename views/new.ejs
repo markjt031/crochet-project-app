@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    
+    <form>
+        <div class="container">
+            <div class="container-item">
+                <fieldset id="image-input">
+                <img id="image-preview" src="/uploads/20230309094926793_480x320.jpeg">
+                <input id="upload-images" type="file" name="img" accept="image/*" />
+                </fieldset>
+            </div>
+            <div class="container-item">
+                <fieldset id="project-data">
+                    <input type="text" name="name">
+                    <input type="text" name="colors" placeholder="Enter yarn colors, separated by comma"/>
+                    <input type="text" name="yarnBrands" placeholder="Enter the brands of yarn, separated by comma"/>
+                    <input type="text" name="patternCredit" placeholder="Enter the name/site/book you found the pattern from"></br>
+                    <input type="checkbox" name="completed"/></br>
+                    <input type="textarea" name="description"/></br>
+                    <input type="submit" value="submit">
+                </fieldset>
+                
+            </div>
+        </div>
+    </form>
+    <script src="/js/eventListener.js"></script>
+    
+</body>
+</html>

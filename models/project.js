@@ -1,8 +1,8 @@
 const mongoose=require('mongoose');
 
-const ProjectSchema= new mongoose.schema({
+const ProjectSchema= new mongoose.Schema({
     name: {type: String, required: true},
-    img: { data: Buffer, contentType: String },
+    img: {data: Buffer, contentType: String},
     description: {type: String},
     colors: [{type: String}],
     yarnBrands: [{type: String}],

@@ -2,14 +2,17 @@ require('dotenv').config();
 const express=require('express');
 const mongoose=require('mongoose');
 const methodOverride=require('method-override');
-const upload=require('multer');
+const multer=require('multer');
 const Project=require('./models/project');
+const fs=require('fs');
 
 
-
-const app=express();
 const PORT=process.env.PORT;
 const mongoURI=process.env.MONGO_URI;
+
+const app=express();
+const upload=multer({dest: "./uploads"})
+
 
 app.use(express.static('public'));
 app.use("/uploads", express.static('uploads'))
@@ -35,11 +38,19 @@ app.get("/gallery", (req, res)=>{
 })
 
 app.get("/gallery/new", (req, res)=>{
-    res.send("this is the new page");
+    res.render('new.ejs');
 })
 
-app.post("/gallery", (req, res)=>{
-    console.log(req.body);
+app.post("/gallery", upload.single('img'), (req, res)=>{
+    if (!req.file){
+        let image=fs.readFileSync('./uploads/20230309094926793_480x320.jpeg')
+        console.log(image);
+        //console.log(image);
+        let newproduct={name: req.body.name, img: {data: image.toString('base64'), contentType:"image/png"}, colors: req.body.colors, complete: req.body.complete}
+        console.log(newproduct)
+        res.render("test.ejs", {product: newproduct});
+    }
+
 })
 
 app.get("/gallery/:id", (req,res)=>{
