@@ -1,6 +1,12 @@
 body{
     background-color: #D8C6C6;
 }
+label{
+    grid-column: 1/2;
+    text-align: right;
+    font-size: 2vw;
+    
+}
 .container{
     display: flex;
     flex-flow: row wrap;
@@ -13,11 +19,44 @@ body{
     width: 48%;
     /* max-width: 50%; */
     height: 100%;
-    background-color: #E7E7E7;
+    background-color: white;
     border: 1px solid;
     margin: 0 auto;
     padding: 4px;
     box-shadow: 5px 10px 8px #888888;
+}
+.form-inputs{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: .7fr 1.8fr;
+    grid-gap: 0px 10px;
+}
+.form-input{
+    grid-column: 2/3;
+}
+#banner-img{
+    width: 100%;
+}
+nav ul{
+    display: flex;
+    flex-flow: row-wrap;
+    padding: 0;
+}
+nav ul li{
+    display: block;
+    width: 50%;
+    background-color: #e6d7bc;
+    text-align: center;
+    font-size: 3vw;
+    color: #5b4218;
+    border: solid #5b4218 1px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: inherit;
+}
+nav ul li a::hover{
+    color: 
 }
 
 #image-preview{
@@ -32,32 +71,12 @@ body{
     margin: 0 auto;
 
 }
-fieldset{
-    height: 95%;
-}
-.form-input{
-    grid-column: 2/3;
-}
-
-input[type=checkbox]{
-    text-align: left;
-}
 /* .right{
     float: right;
     display: inline;
 } */
-label{
-    grid-column: 1/2;
-    text-align: right;
-    font-size: 2vw;
-    
-}
-.form-inputs{
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: .7fr 1.8fr;
-    grid-gap: 0px 10px;
-}
+
+
 /* ::-webkit-input-placeholder{
     color: #000000;
     font-size: 10px;
