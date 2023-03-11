@@ -8,8 +8,8 @@ const fs=require('fs');
 
 
 const PORT=process.env.PORT;
-//const mongoURI=process.env.MONGO_URI;
-const mongoURI = 'mongodb://localhost:27017/projects';
+const mongoURI=process.env.MONGO_URI;
+//const mongoURI = 'mongodb://localhost:27017/projects';
 
 const app=express();
 const upload=multer({dest: "./uploads"})
@@ -74,7 +74,11 @@ app.post("/gallery", upload.single('img'), (req, res)=>{
             patternCredit: req.body.patternCredit,
             complete: req.body.complete
         });
-        fs.unlink("./"+req.file.path)
+        fs.unlink("./"+req.file.path, (err)=>{
+            if (err){
+                console.log(err.message)
+            }
+        })
         res.redirect("/gallery")
     }
 
@@ -128,7 +132,11 @@ app.put('/gallery/:id', upload.single('img'), (req, res)=>{
             if (err){
                 console.log(err.message)
             }
-            fs.unlink("./"+req.file.path);
+            fs.unlink("./"+req.file.path, (err)=>{
+                if (err){
+                    console.log(err)
+                }
+            });
             res.redirect('/gallery/'+req.params.id);
         })
     }
