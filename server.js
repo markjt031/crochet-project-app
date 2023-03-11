@@ -61,11 +61,12 @@ app.post("/gallery", upload.single('img'), (req, res)=>{
         res.redirect("/gallery")
     }
     else{
+        console.log(req.file)
         Project.create({
             name: req.body.name, 
-            img: {data: req.file.buffer, contentType: req.file.mimetype},
-            colors: req.body.colors.split(","),
-            yarnBrands: req.body.yarnBrands.split(","),
+            img: {data: fs.readFileSync("./"+req.file.path).toString('base64'), contentType: req.file.mimetype},
+            colors: req.body.colors.split(", "),
+            yarnBrands: req.body.yarnBrands.split(", "),
             patternCredit: req.body.patternCredit,
             complete: req.body.complete
         });
