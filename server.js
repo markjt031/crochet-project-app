@@ -8,7 +8,8 @@ const fs=require('fs');
 
 
 const PORT=process.env.PORT;
-const mongoURI=process.env.MONGO_URI;
+//const mongoURI=process.env.MONGO_URI;
+const mongoURI = 'mongodb://localhost:27017/projects';
 
 const app=express();
 const upload=multer({dest: "./uploads"})
