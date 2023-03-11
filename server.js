@@ -35,8 +35,13 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.listen(PORT, () => console.log(`server is listening on port: ${PORT}`));
 
 app.get("/gallery", (req, res)=>{
-    res.send("this is the gallery page");
-})
+    Project.find({}, (error, allProjects)=>{
+		if (error){console.log(error.message)}
+        res.render('index.ejs', {
+            projects: allProjects
+        });
+    });
+});
 
 app.get("/gallery/new", (req, res)=>{
     res.render('new.ejs');
@@ -94,6 +99,12 @@ app.get("/gallery/:id", (req,res)=>{
 });
 
 app.get("/gallery/:id/edit", (req, res)=>{
-    res.send("this is the edit page");
+    Project.findById(req.params.id,(err, foundProject)=>{
+        if (err){
+            console.log(err.message);
+        }
+        res.render('edit.ejs', {project: foundProject})
+    } )
+   
 })
 

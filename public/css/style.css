@@ -34,13 +34,33 @@ label{
 .form-input{
     grid-column: 2/3;
 }
+.gallery{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+.gallery-item{
+    width: 30%;
+    background-color: white;
+    border: solid #5b4218 1px;
+    box-shadow: 5px 10px 8px #888888;
+    text-align: center;
+
+}
+#gallery-image{
+    max-height: 200px;
+    display: block;
+    margin: 10px auto 0 auto;
+}
 #banner-img{
     width: 100%;
+    border: solid #5b4218 1px;
 }
 nav ul{
     display: flex;
     flex-flow: row-wrap;
     padding: 0;
+    box-shadow: 5px 10px 8px #888888;
 }
 nav ul li{
     display: block;
@@ -55,9 +75,7 @@ nav ul li a{
     text-decoration: none;
     color: inherit;
 }
-nav ul li a::hover{
-    color: 
-}
+
 
 #image-preview{
     max-width: 90%;

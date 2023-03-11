@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
-    <header>
-        <img src="https://i.imgur.com/zc2h0lV.png" id="banner-img">
-        <nav>
-            <ul>
-                <li><a href="/gallery">Gallery</a></li>
-                <li><a href="/gallery/new">Create New</a></li>
-            </ul>
-        </nav>
-    </header>
+    <%- include('./partials/header.ejs') %>
+    
     <div class="container">
         <div class="container-item">
             <img id="image-preview" src="data:<%=project.img.contentType%>;base64, <%=project.img.data%>">
@@ -27,6 +12,12 @@
            <p><span class="left">Yarn Brands: </span><span class="right"><%=project.yarnBrands.join(', ')%></span></p>
             <p><span class="left">Pattern Credit: </span><span class="right"><%=project.patternCredit%></span></p>
             <p><span class="left">Completed: </span><span class="right"><%=project.complete%></span></p>
+            <div class="edit-delete">
+                <a href="/gallery/<%=project.id%>/edit"><input type="button" value="Edit"></a>
+                <form onsubmit="return confirm('Are you sure you want to delete?')">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
         </div>
     </div>
 </body>

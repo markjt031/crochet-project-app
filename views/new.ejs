@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
-</head>
+<%- include('./partials/head.ejs') %>
 <body>
-    
+    <%- include('./partials/header.ejs') %>
     <form action="/gallery" method="POST" enctype="multipart/form-data">
         <div class="container">
             <div class="container-item">
@@ -21,11 +13,11 @@
                         <label for="colors">Colors:</label><input type="text" name="colors" id="colors" class="form-input" placeholder="Enter yarn colors, separated by comma"/></label><br/>
                         <label for="yarnBrands">Yarn Brands:</label><input type="text" name="yarnBrands" id="yarn-brands" class="form-input" placeholder="Enter the brands of yarn, separated by comma"/><br/>
                         <label for="patternCredit">Pattern Credit:</label><input type="text" name="patternCredit" id="pattern-credit" class="form-input" placeholder="Enter the name/site/book you found the pattern from"></br>
-                        <label for="completed">Completed:</label>
-                        <select name="completed" class="form-input" id="completed">
+                        <label for="complete">Completed:</label>
+                        <select name="complete" class="form-input" id="complete">
                             <option value="Not Started">Not Started</option>
                             <option value="In Progress">In Progress</option>
-                            <option value="Completed">Completed</option>
+                            <option value="Complete">Complete</option>
                         </select><br/>
                         <label for="description">Description:</label><textarea name="description" id="description" class="form-input" rows=5/></textarea><br/>
                         <input type="submit" value="submit" class='form-input'>
