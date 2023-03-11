@@ -6,15 +6,16 @@
         <div class="container-item">
             <img id="image-preview" src="data:<%=project.img.contentType%>;base64, <%=project.img.data%>">
         </div>
-        <div class="container-item">
-            <p><span class="left">Name: </span><span class="right"><%=project.name%></span></p>
-            <p><span class="left">Colors: </span><span class="right"><%=project.colors.join(', ')%></span></p>
-           <p><span class="left">Yarn Brands: </span><span class="right"><%=project.yarnBrands.join(', ')%></span></p>
-            <p><span class="left">Pattern Credit: </span><span class="right"><%=project.patternCredit%></span></p>
-            <p><span class="left">Completed: </span><span class="right"><%=project.complete%></span></p>
+        <div class="container-item grid-display">
+            <span class="left">Name: </span><span class="right"><%=project.name%></span>
+            <span class="left">Colors: </span><span class="right"><%=project.colors.join(', ')%></span>
+            <span class="left">Yarn Brands: </span><span class="right"><%=project.yarnBrands.join(', ')%></span>
+            <span class="left">Pattern Credit: </span><span class="right"><%=project.patternCredit%></span>
+            <span class="left">Completed: </span><span class="right"><%=project.complete%></span>
+            <span class="left">Description: </span><span class="right"><%=project.description%></span>
             <div class="edit-delete">
                 <a href="/gallery/<%=project.id%>/edit"><input type="button" value="Edit"></a>
-                <form onsubmit="return confirm('Are you sure you want to delete?')">
+                <form action="/gallery/<%=project.id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
                     <input type="submit" value="Delete">
                 </form>
             </div>

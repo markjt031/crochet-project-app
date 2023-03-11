@@ -34,6 +34,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 app.listen(PORT, () => console.log(`server is listening on port: ${PORT}`));
 
+//Index Route
 app.get("/gallery", (req, res)=>{
     Project.find({}, (error, allProjects)=>{
 		if (error){console.log(error.message)}
@@ -43,10 +44,12 @@ app.get("/gallery", (req, res)=>{
     });
 });
 
+//New Route
 app.get("/gallery/new", (req, res)=>{
     res.render('new.ejs');
 })
 
+//Create Route
 app.post("/gallery", upload.single('img'), (req, res)=>{
     if (!req.file){
         let image=fs.readFileSync('./uploads/20230309094926793_480x320.jpeg')
@@ -62,32 +65,42 @@ app.post("/gallery", upload.single('img'), (req, res)=>{
     }
     else{
         console.log(req.file)
+        let image=fs.readFileSync("./"+req.file.path)
         Project.create({
             name: req.body.name, 
-            img: {data: fs.readFileSync("./"+req.file.path).toString('base64'), contentType: req.file.mimetype},
+            img: {data: image.toString('base64'), contentType: req.file.mimetype},
             colors: req.body.colors.split(", "),
             yarnBrands: req.body.yarnBrands.split(", "),
             patternCredit: req.body.patternCredit,
             complete: req.body.complete
         });
+        fs.unlink("./"+req.file.path)
         res.redirect("/gallery")
     }
 
 })
-app.get("/seed",(req, res)=>{
-    Project.create([{
-        name: "Squid",
-        img: {data: fs.readFileSync("./uploads/20230307_213933.jpg").toString('base64'), contentType:"img/jpeg"},
-        description: "A neon giant squid",
-        colors: ["pink", "purple", "black", "blue", "green"],
-        yarnBrands: ["Red Heart Super Saver"],
-        patternCredit: "projectarian.com/shop/product/hubble-the-squid-free-crochet-pattern/",
-        complete: "complete"
-    }])
-    console.log(Project.find({}, (err, foundProjects)=>{
-        console.log(foundProjects)
-    }));
-} )
+app.delete('/gallery/:id', (req, res)=>{
+    Project.findByIdAndRemove(req.params.id, (err, foundProject)=>{
+        if (err){
+            console.log(err.message)
+        }
+        res.redirect('/gallery')
+    })
+})
+// app.get("/seed",(req, res)=>{
+//     Project.create([{
+//         name: "Squid",
+//         img: {data: fs.readFileSync("./uploads/20230307_213933.jpg").toString('base64'), contentType:"img/jpeg"},
+//         description: "A neon giant squid",
+//         colors: ["pink", "purple", "black", "blue", "green"],
+//         yarnBrands: ["Red Heart Super Saver"],
+//         patternCredit: "projectarian.com/shop/product/hubble-the-squid-free-crochet-pattern/",
+//         complete: "complete"
+//     }])
+//     console.log(Project.find({}, (err, foundProjects)=>{
+//         console.log(foundProjects)
+//     }));
+// } )
 
 app.get("/gallery/:id", (req,res)=>{
     Project.findById(req.params.id, (err, foundProject)=>{
@@ -98,7 +111,30 @@ app.get("/gallery/:id", (req,res)=>{
         });
     });
 });
-
+app.put('/gallery/:id', upload.single('img'), (req, res)=>{
+    console.log(req.body)
+    if (!req.file){
+        Project.findByIdAndUpdate(req.params.id, req.body, (err, updatedModel)=>{
+            if (err){
+                console.log(err.message)
+            }
+            res.redirect('/gallery/'+req.params.id);
+        })    
+    }
+    else{
+        let image=fs.readFileSync("./"+req.file.path);
+        req.body.img={data: image.toString('base64'), contentType: req.file.contentType};
+        Project.findByIdAndUpdate(req.params.id, req.body, (err, updatedModel)=>{
+            if (err){
+                console.log(err.message)
+            }
+            fs.unlink("./"+req.file.path);
+            res.redirect('/gallery/'+req.params.id);
+        })
+    }
+    
+    
+})
 app.get("/gallery/:id/edit", (req, res)=>{
     Project.findById(req.params.id,(err, foundProject)=>{
         if (err){

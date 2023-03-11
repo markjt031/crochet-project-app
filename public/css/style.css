@@ -38,7 +38,21 @@ label{
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    
+}
+.grid-display{
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    grid-gap: 5px 10px;
+}
+.left{
+    grid-column: 1/2;
+    text-align: right;
+}
+.right{
+    grid-column: 2/3;
 }
 .gallery-item{
     width: 30%;
@@ -76,8 +90,20 @@ nav ul li a{
     text-decoration: none;
     color: inherit;
 }
-
-
+.edit-delete{
+    display: flex;
+    grid-column: 1/3;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    
+}
+.edit-delete input{
+    display: block;
+}
+.edit-delete form{
+    display: block;
+}
 #image-preview{
     max-width: 90%;
     max-height: 300px;
