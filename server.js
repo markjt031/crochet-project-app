@@ -45,18 +45,53 @@ app.get("/gallery/new", (req, res)=>{
 app.post("/gallery", upload.single('img'), (req, res)=>{
     if (!req.file){
         let image=fs.readFileSync('./uploads/20230309094926793_480x320.jpeg')
-        console.log(image);
-        //console.log(image);
-        let newproduct={name: req.body.name, img: {data: image.toString('base64'), contentType:"image/png"}, colors: req.body.colors, complete: req.body.complete}
-        console.log(newproduct)
-        res.render("test.ejs", {product: newproduct});
+        Project.create({
+            name: req.body.name, 
+            img: {data: image.toString('base64'), contentType: 'image/jpeg'},
+            colors: req.body.colors.split(","),
+            yarnBrands: req.body.yarnBrands.split(","),
+            patternCredit: req.body.patternCredit,
+            complete: req.body.complete
+        });
+        res.redirect("/gallery")
+    }
+    else{
+        Project.create({
+            name: req.body.name, 
+            img: {data: req.file.buffer, contentType: req.file.mimetype},
+            colors: req.body.colors.split(","),
+            yarnBrands: req.body.yarnBrands.split(","),
+            patternCredit: req.body.patternCredit,
+            complete: req.body.complete
+        });
+        res.redirect("/gallery")
     }
 
 })
+app.get("/seed",(req, res)=>{
+    Project.create([{
+        name: "Squid",
+        img: {data: fs.readFileSync("./uploads/20230307_213933.jpg").toString('base64'), contentType:"img/jpeg"},
+        description: "A neon giant squid",
+        colors: ["pink", "purple", "black", "blue", "green"],
+        yarnBrands: ["Red Heart Super Saver"],
+        patternCredit: "projectarian.com/shop/product/hubble-the-squid-free-crochet-pattern/",
+        complete: "complete"
+    }])
+    console.log(Project.find({}, (err, foundProjects)=>{
+        console.log(foundProjects)
+    }));
+} )
 
 app.get("/gallery/:id", (req,res)=>{
-    res.send("this is the show page");
-})
+    Project.findById(req.params.id, (err, foundProject)=>{
+        if (err){console.log(err.message)}
+        //console.log(foundProject)
+        res.render('show.ejs', {
+            project: foundProject
+        });
+    });
+});
 
 app.get("/gallery/:id/edit", (req, res)=>{
     res.send("this is the edit page");

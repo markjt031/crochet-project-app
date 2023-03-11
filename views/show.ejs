@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container-item">
+            <img id="image-preview" src="data:<%=project.img.contentType%>;base64, <%=project.img.data%>">
+        </div>
+        <div class="container-item">
+            <p><span class="left">Name: </span><span class="right"><%=project.name%></span></p>
+            <p><span class="left">Colors: </span><span class="right"><%=project.colors.join(', ')%></span></p>
+           <p><span class="left">Yarn Brands: </span><span class="right"><%=project.yarnBrands.join(', ')%></span></p>
+            <p><span class="left">Pattern Credit: </span><span class="right"><%=project.patternCredit%></span></p>
+            <p><span class="left">Completed: </span><span class="right"><%=project.complete%></span></p>
+        </div>
+    </div>
+</body>
+</html>
