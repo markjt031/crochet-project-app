@@ -8,7 +8,7 @@ const ProjectSchema= new mongoose.Schema({
     yarnBrands: [{type: String}],
     patternCredit: {type: String},
     complete: {type: String}
-}, {timeStamps: true}, {collection: "Projects" });
+}, {timestamps: true});
 
 const Project=mongoose.model("Project", ProjectSchema);
 module.exports=Project;

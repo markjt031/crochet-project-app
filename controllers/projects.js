@@ -5,11 +5,13 @@ const multer=require('multer');
 const fs=require('fs');
 const upload=multer({dest: "./uploads"});
 const methodOverride=require('method-override');
+const moment=require('moment')
 
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true}));
 router.use(methodOverride('_method'));
+
 
 //Index Route
 router.get("/", (req, res)=>{
@@ -71,7 +73,8 @@ router.get("/:id", (req,res)=>{
         if (err){console.log(err.message)}
         //console.log(foundProject)
         res.render('show.ejs', {
-            project: foundProject
+            project: foundProject,
+            time: moment(foundProject.createdAt).format("dddd, MMMM Do YYYY, h:mm:ss a")
         });
     });
 });
