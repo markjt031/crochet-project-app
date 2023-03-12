@@ -31,8 +31,8 @@ router.get("/new", (req, res)=>{
 //Create Route
 router.post("/", upload.single('img'), (req, res)=>{
     if (!req.file){
-        let image=fs.readFileSync('./uploads/20230309094926793_480x320.jpeg')
-        req.body.img={data: image.toString('base64'), contentType: 'img/jpeg'};
+       
+        req.body.img='/uploads/20230309094926793_480x320.jpeg';
         Project.create(req.body, (err, newProject)=>{
             if (err){
                 console.log(err.message);
@@ -42,18 +42,13 @@ router.post("/", upload.single('img'), (req, res)=>{
        
     }
     else{
-        console.log(req.file)
-        let image=fs.readFileSync("./"+req.file.path)
-        req.body.img={data: image.toString('base64'), contentType: req.file.contentType};
+        // console.log(req.file)
+        // let image=fs.readFileSync("./"+req.file.path)
+        req.body.img="/"+req.file.path;
         Project.create(req.body, (err, newProject)=>{
             if (err){
                 console.log(err.message);
             }
-            fs.unlink("./"+req.file.path, (err)=>{
-                if (err){
-                    console.log(err)
-                }
-            });
             res.redirect("/gallery");
         });
     }
@@ -79,7 +74,7 @@ router.get("/:id", (req,res)=>{
     });
 });
 router.put('/:id', upload.single('img'), (req, res)=>{
-    console.log(req.body)
+    
     if (!req.file){
         Project.findByIdAndUpdate(req.params.id, req.body, (err, updatedModel)=>{
             if (err){
@@ -89,17 +84,18 @@ router.put('/:id', upload.single('img'), (req, res)=>{
         })    
     }
     else{
-        let image=fs.readFileSync("./"+req.file.path);
-        req.body.img={data: image.toString('base64'), contentType: req.file.contentType};
+        // let image=fs.readFileSync("./"+req.file.path);
+        // console.log(req.file.path);
+        req.body.img='/'+req.file.path;
         Project.findByIdAndUpdate(req.params.id, req.body, (err, updatedModel)=>{
             if (err){
                 console.log(err.message)
             }
-            fs.unlink("./"+req.file.path, (err)=>{
-                if (err){
-                    console.log(err)
-                }
-            });
+            // fs.unlink("./"+req.file.path, (err)=>{
+            //     if (err){
+            //         console.log(err)
+            //     }
+            // });
             res.redirect('/gallery/'+req.params.id);
         })
     }

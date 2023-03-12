@@ -4,8 +4,8 @@
     <div class="gallery">
         <% for (let i=0; i<projects.length; i++){%>
             <div class="gallery-item">
-                <a href="/gallery/<%=projects[i].id%>"><img id="gallery-image" src="data:<%=projects[i].img.contentType%>;base64, <%=projects[i].img.data%>"></a>
-                <p><%=projects[i].name%></p>
+                <a href="/gallery/<%=projects[i].id%>"><img id="gallery-image" src="<%=projects[i].img%>"></a>
+                <a href="/gallery/<%=projects[i].id%>"><p><%=projects[i].name%></p></a>
             </div>
         <%}%>
     </div>

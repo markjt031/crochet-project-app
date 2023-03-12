@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 const ProjectSchema= new mongoose.Schema({
     name: {type: String, required: true},
-    img: {data: Buffer, contentType: String},
+    img: {type: String},
     description: {type: String},
     colors: [{type: String}],
     yarnBrands: [{type: String}],
