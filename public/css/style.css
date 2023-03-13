@@ -112,6 +112,10 @@ nav ul li form input{
     border: #5b4218;
     box-sizing: border-box;
 }
+.new-user{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
 .edit-delete{
     display: flex;
     grid-column: 1/3;
