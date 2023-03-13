@@ -21,7 +21,6 @@ The Crochet Project Manager site lets you upload, delete and edit multiple croch
 * JavaScript
 * HTML5
 * CSS3
-* Axios
 * Node.Js
 * MongoDB
 * Express.js
