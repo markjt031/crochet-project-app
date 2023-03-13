@@ -42,6 +42,12 @@ label{
     justify-content: space-around;
     
 }
+.register, .login{
+    width: 50%;
+    display: block;
+    margin: 10px auto 0 auto;
+    
+}
 .grid-display{
     margin: 0 auto;
     display: grid;
@@ -94,6 +100,17 @@ nav ul li{
 nav ul li a{
     text-decoration: none;
     color: inherit;
+}
+nav ul li form input{
+    display: block;
+    width: 100%;
+    background-color: #e6d7bc;
+    text-align: center;
+    font-size: 3vw;
+    font-family: 'Times New Roman', Times, serif;
+    color: #5b4218;
+    border: #5b4218;
+    box-sizing: border-box;
 }
 .edit-delete{
     display: flex;

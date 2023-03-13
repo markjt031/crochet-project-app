@@ -1,0 +1,13 @@
+
+<nav>
+    <ul>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/gallery/new">Create New</a></li>
+        <li>
+            <form action="/sessions?_method=DELETE" method="POST">
+            <input type="submit" value="Log Out" class="" />
+          </form>
+        </li>
+    </ul>
+</nav>
+<p>Welcome, <%=currentUser.username%></p>

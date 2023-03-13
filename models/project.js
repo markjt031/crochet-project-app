@@ -7,7 +7,8 @@ const ProjectSchema= new mongoose.Schema({
     colors: [{type: String}],
     yarnBrands: [{type: String}],
     patternCredit: {type: String},
-    complete: {type: String}
+    complete: {type: String},
+    createdBy: {type: String}
 }, {timestamps: true});
 
 const Project=mongoose.model("Project", ProjectSchema);

@@ -1,14 +1,31 @@
 require('dotenv').config();
 const express=require('express');
 const mongoose=require('mongoose');
-
-const projectController=require('./controllers/projects')
+const session = require('express-session')
+const userController = require('./controllers/user_controller.js')
+const sessionsController = require('./controllers/sessions_controller.js')
+const methodOverride=require('method-override');
+const projectController=require('./controllers/projects');
+const Project = require('./models/project.js');
 
 const app=express();
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
+app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.use("/uploads", express.static('uploads'));
+
+app.use(session({
+	  secret: process.env.SECRET,
+	  resave: false, 
+	  saveUninitialized: false
+	})
+  )
+app.use('/users', userController)
 app.use("/gallery", projectController);
+app.use('/sessions', sessionsController)
 
 
 const PORT=process.env.PORT;
@@ -27,7 +44,12 @@ db.on('connected', () => console.log('mongo connected'));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 app.get("/", (req, res)=>{
-    res.send('home page');
+	if (req.session.currentUser){
+    	res.redirect("/gallery");
+	}
+	else {
+		res.redirect("/sessions/new");
+	}
 })
 
 app.listen(PORT, () => console.log(`server is listening on port: ${PORT}`));
