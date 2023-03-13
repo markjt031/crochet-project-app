@@ -116,6 +116,10 @@ nav ul li form input{
     font-family: 'Times New Roman', Times, serif;
     font-size: 15px;
 }
+.error{
+    color: red;
+    font-size: 10px;
+}
 .edit-delete{
     display: flex;
     grid-column: 1/3;

@@ -7,6 +7,11 @@
             <label for="password">Password:</label><input type="password" id="password" name="password" class="form-input">
             <input type="submit" class="form-input" value="Log In">
         </div>
+        <div class="error">
+            <% if (err){%>
+                <p><%=err%></p>
+            <%}%>
+        </div>
         <div>
            <p class="new-user">New user? Register <a href="/users/new">here</a></p>
         </div>
