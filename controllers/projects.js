@@ -1,11 +1,27 @@
+require('dotenv').config();
+const AWS= require('aws-sdk');
 const express= require('express')
 const Project=require('../models/project');
 const router= express.Router();
 const fs=require('fs');
 const multer=require('multer');
-const upload=multer({dest: "./uploads"});
+const multers3=require('multer-s3');
+
 const moment=require('moment')
 const methodOverride=require('method-override');
+
+
+const s3=new AWS.S3({
+    accessKeyId: process.env.BUCKETEER_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.BUCKETEER_AWS_SECRET_ACCESS_KEY,
+    region: 'us-east-1'
+});
+
+const upload=multer({storage: multers3({
+    s3: s3,
+    acl: 'public-read',
+    bucket: process.env.BUCKETEER_BUCKET_NAME
+})});
 
 router.use(express.json());
 router.use(express.urlencoded({ extended: true}));
@@ -50,7 +66,7 @@ router.post("/", isAuthenticated, upload.single('img'), (req, res)=>{
         }
     else{
         req.body.createdBy=req.session.currentUser.username
-        req.body.img="/"+req.file.path;
+        req.body.img=req.file.location;
         Project.create(req.body, (err, newProject)=>{
             if (err){
                 console.log(err.message);
@@ -92,7 +108,7 @@ router.put('/:id', isAuthenticated, upload.single('img'), (req, res)=>{
     else{
         // let image=fs.readFileSync("./"+req.file.path);
         // console.log(req.file.path);
-        req.body.img='/'+req.file.path;
+        req.body.img=req.file.location;
         Project.findByIdAndUpdate(req.params.id, req.body, (err, updatedModel)=>{
             if (err){
                 console.log(err.message)

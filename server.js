@@ -1,14 +1,18 @@
 require('dotenv').config();
+const aws= require('aws-sdk');
 const express=require('express');
 const mongoose=require('mongoose');
 const session = require('express-session')
-const userController = require('./controllers/user_controller.js')
-const sessionsController = require('./controllers/sessions_controller.js')
+const userController = require('./controllers/user_controller.js');
+const sessionsController = require('./controllers/sessions_controller.js');
 const methodOverride=require('method-override');
 const projectController=require('./controllers/projects');
 const Project = require('./models/project.js');
 
+
+
 const app=express();
+
 
 
 app.use(express.json());
