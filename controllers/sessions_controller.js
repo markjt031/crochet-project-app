@@ -13,16 +13,13 @@ sessions.post('/', (req, res) => {
     if (err) {
       console.log(err)
       res.render('sessions/new.ejs', {err: 'Database Error'})
-    } 
-    else if (!foundUser) {
+    } else if (!foundUser) {
       res.render('sessions/new.ejs', {err: "User not found. Please register"});
-    } 
-    else {
+    } else {
       if (bcrypt.compareSync(req.body.password, foundUser.password)) {
         req.session.currentUser = foundUser
         res.redirect('/')
-      } 
-      else {
+      } else {
         res.render('sessions/new.ejs', {err: "Invalid Password"})
       }
     }

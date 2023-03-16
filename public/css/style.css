@@ -8,43 +8,37 @@ label{
     font-size: 2vw;
     
 }
-
 .container{
     display: flex;
     flex-flow: row wrap;
-    max-width: 800px;
-    width: 100%;
-    
+    max-width: 100%;
+    height: auto;
+    justify-content: space-between;
     margin: 0 auto;
-}
-.img-container{
-    width: 39%;
 }
 .container-item{
     width: 48%;
-    /* max-width: 400px; */
+    /* max-width: 50%; */
+    height: 100%;
     background-color: white;
     border: 1px solid;
-    
+    margin: 0 auto;
     padding: 4px;
     box-shadow: 5px 10px 8px #888888;
 }
 .form-inputs{
-    width: 99%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: .2fr .8fr;
+    grid-template-columns: .7fr 1.8fr;
     grid-gap: 0px 10px;
-    /* padding-right: 5px; */
 }
 .form-input{
     grid-column: 2/3;
-    width: 100%;
 }
 .gallery{
     display: flex;
     flex-flow: row wrap;
-    width: 100%; 
+    /* width: 100%; */
     justify-content: space-around;
     
 }
@@ -55,21 +49,22 @@ label{
     
 }
 .grid-display{
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: .2fr .8fr;
-    gap: 2px 5px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px 10px;
 }
 .left{
     grid-column: 1/2;
     text-align: right;
-    
 }
 .right{
     grid-column: 2/3;
-    
 }
 .gallery-item{
     width: 30%;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-color: white;
     border: solid #5b4218 1px;
     box-shadow: 5px 10px 8px #888888;
@@ -78,7 +73,7 @@ label{
 
 }
 #gallery-image{
-    max-width: 90%;
+    max-height: 200px;
     display: block;
     margin: 10px auto 0 auto;
 }
@@ -153,14 +148,14 @@ nav ul li form input{
 }
 p, span{
     font-family: 'Merriweather', serif;
-    font-size: 1.4vw;
+    /* font-size: 1.2vw; */
 }
 @media only screen and (max-width: 600px){
     nav ul li, nav ul li form input{
         font-size: 4vw;
     }
     p, span{
-        font-size: 2vw;
+        font-size: 1.7vw;
     }
     .container-item{
         width: 100%;
