@@ -1,12 +1,14 @@
 <%- include("../partials/head.ejs")%>
 <body>
     <%- include("../partials/header.ejs")%>
-    <form action="/users" method="POST" class="register">
-        <div class="form-inputs">
-            <label for="username">Username:</label><input type="text" id="username" name="username" class="form-input">
-            <label for="password">Password:</label><input type="password" id="password" name="password" class="form-input">
-            <input type="submit" class="form-input" value="Register">
-        </div>
-    </form>
+    <div class="container-item login-form">
+        <form action="/users" method="POST" class="register">
+            <div class="login-form-inputs">
+                <label for="username">Username:</label><input type="text" id="username" name="username" class="form-input">
+                <label for="password">Password:</label><input type="password" id="password" name="password" class="form-input">
+                <input type="submit" class="form-input" value="Register">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
