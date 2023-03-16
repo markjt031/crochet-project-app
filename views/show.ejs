@@ -3,18 +3,18 @@
     <%- include('./partials/header.ejs') %>
     <%- include('./partials/nav.ejs') %>
     <div class="container">
-        <div class="container-item img-container">
+        <div class="container">
             <img id="image-preview" src="<%=project.img%>">
         </div>
-        <div class="container-item grid-display">
-            <span class="left">Name: </span><span class="right"><%=project.name%></span>
-            <span class="left">Time Created:</span><span class="right"><%=time%></span>
-            <span class="left">Colors: </span><span class="right"><%=project.colors.join(', ')%></span>
-            <span class="left">Yarn Brands: </span><span class="right"><%=project.yarnBrands.join(', ')%></span>
-            <span class="left">Pattern Credit: </span><span class="right"><%=project.patternCredit%></span>
-            <span class="left">Completed: </span><span class="right"><%=project.complete%></span>
-            <span class="left">Description: </span><span class="right"><%=project.description%></span>
-            <div class="edit-delete">
+        <div class="container-item grid-cols-3">
+            <span class="cols-start-1 cols-span-1">Name: </span><span class="cols-start-2 cols-span-2"><%=project.name%></span>
+            <span class="cols-start-1 cols-span-1">Time Created:</span><span class="cols-start-2 cols-span-2"><%=time%></span>
+            <span class="cols-start-1 cols-span-1">Colors: </span><span class="cols-start-2 cols-span-2"><%=project.colors.join(', ')%></span>
+            <span class="cols-start-1 cols-span-1">Yarn Brands: </span><span class="cols-start-2 cols-span-2"><%=project.yarnBrands.join(', ')%></span>
+            <span class="cols-start-1 cols-span-1">Pattern Credit: </span><span class="cols-start-2 cols-span-2"><%=project.patternCredit%></span>
+            <span class="cols-start-1 cols-span-1">Completed: </span><span class="cols-start-2 cols-span-2"><%=project.complete%></span>
+            <span class="cols-start-1 cols-span-1">Description: </span><span class="cols-start-2 cols-span-2"><%=project.description%></span>
+            <div class="container flex sm">
                 <a href="/gallery/<%=project.id%>/edit"><input type="button" value="Edit"></a>
                 <form action="/gallery/<%=project.id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete?')">
                     <input type="submit" value="Delete">
