@@ -45,6 +45,7 @@ label{
     display: flex;
     flex-flow: row wrap;
     /* width: 100%; */
+
     justify-content: space-around;
     
 }
@@ -89,6 +90,8 @@ label{
     width: 100%;
     border: solid #5b4218 1px;
     box-shadow: 5px 10px 8px #888888;
+    margin: 0 auto;
+    display: block;
 }
 nav ul{
     display: flex;
@@ -122,9 +125,10 @@ nav ul li form input{
     font-size: 15px;
     text-align: center;
 }
-.error{
+.error p{
     color: red;
-    font-size: 10px;
+    font-size: 15px;
+    text-align: center;
 }
 .edit-delete{
     display: flex;
@@ -200,5 +204,13 @@ nav ul li a{
     }
     .login-form-inputs{
         display: block;
+    }
+}
+
+@media only screen and (min-width:1000px){
+    #banner-img{
+        width: 80%;
+        display: block;
+        margin: 0 auto;
     }
 }
