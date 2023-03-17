@@ -73,19 +73,19 @@ Edit
 
 ### <a name=mvp-goals></a>MVP Goals
 
-- :heavy_check_mark: As a user, I want my projects to be added to the site when I fill out the form on the new page.<br/>
-- :heavy_check_mark: As a user, I want to add projects without image uploads required, so that I can quickly add a new project/placeholder as needed.<br />
-- :heavy_check_mark: As a user, I want to view all of my projects on the gallery page, so that I can easily access them.<br />
-- :heavy_check_mark: As a user, I want to view details about my project after clicking on its image on the gallery.<br />
-- :heavy_check_mark: As a user, I want to see a timestamp of when I created my project on the show page, so that I can reference it in the future.<br />
-- :heavy_check_mark: As a user, I want to delete my project when I click on the delete button with a confirmation message so that I don't accidentally delete something I didn't want to.<br />
-- :heavy_check_mark: As a user, I want to be redirected to the show page after filling out the edit form, so that I can see the information that I just edited.<br />
+- :white_check_mark: As a user, I want my projects to be added to the site when I fill out the form on the new page.<br/>
+- :white_check_mark: As a user, I want to add projects without image uploads required, so that I can quickly add a new project/placeholder as needed.<br />
+- :white_check_mark: As a user, I want to view all of my projects on the gallery page, so that I can easily access them.<br />
+- :white_check_mark: As a user, I want to view details about my project after clicking on its image on the gallery.<br />
+- :white_check_mark: As a user, I want to see a timestamp of when I created my project on the show page, so that I can reference it in the future.<br />
+- :white_check_mark: As a user, I want to delete my project when I click on the delete button with a confirmation message so that I don't accidentally delete something I didn't want to.<br />
+- :white_check_mark: As a user, I want to be redirected to the show page after filling out the edit form, so that I can see the information that I just edited.<br />
 
 
 
 ### <a name=stretch-goals></a>Stretch Goals
 - As a user, I can reorder the view of the projects with the sort button.<br />
 - As a user, I can filter projects by color, etc.<br />
-- :heavy_check_mark: As a user, I have a login and must login to view my projects<br />
+- :white_check_mark: As a user, I have a login and must login to view my projects<br />
 
     
